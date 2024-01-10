@@ -170,7 +170,3 @@ function toggleDeletions(event) {
     deletion.style.color = showDeletions ? 'red' : 'black';
   }
 }
-
-
-
-
