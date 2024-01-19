@@ -74,7 +74,6 @@ img {
     height: auto;
 }
 
-
 /* Style the dropdown menu */
 .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
     display: block;
@@ -91,4 +90,14 @@ footer {
     text-align: center;
     font-size: 12px;
     color: #888;
+}
+
+.row p,
+.row ul,
+.row li {
+  line-height: 1; /* You can adjust this value based on your preference */
+}
+
+.row table td {
+  line-height: 15; /* Adjust the line height for table cells if needed */
 }
