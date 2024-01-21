@@ -1,6 +1,5 @@
 // Declare variables for getting the xml file for the XSL transformation (folio_xml) and to load the image in IIIF on the page in question (number).
 const searchParams = new URLSearchParams(window.location.search);
-
 let tei_xml = searchParams.get('page');
 document.getElementById("folio").innerHTML = tei_xml;
 let extension = ".xml";
@@ -96,34 +95,32 @@ function documentLoader() {
     });
   }
 
-// Initial document load
 documentLoader();
 statsLoader();
 
 
-
-// Event listener for sel1 change
 function selectHand(event) {
   var visible_mary = document.getElementsByClassName("#MWS");
   var visible_percy = document.getElementsByClassName("#PBS");
 
-  // Convert the HTMLCollection to an array for forEach compatibility
   var maryArray = Array.from(visible_mary);
   var percyArray = Array.from(visible_percy);
 
-
-
-  // Call the appropriate function based on the selected option
-  if (event.target.value == 'both') {
-    showBoth(maryArray, percyArray);
-  } else if (event.target.value == 'Mary') {
-    showMary(maryArray, percyArray);
+  if (event.target.value == 'reading') {
+    displayReadingText();
   } else {
-    showPercy(maryArray, percyArray);
+    resetToOriginal(maryArray, percyArray);
+
+    if (event.target.value == 'both') {
+      showBoth(maryArray, percyArray);
+    } else if (event.target.value == 'Mary') {
+      showMary(maryArray, percyArray);
+    } else {
+      showPercy(maryArray, percyArray);
+    }
   }
 }
 
-// Logic for 'both'
 function showBoth(maryArray, percyArray) {
   maryArray.forEach(function (element) {
     element.style.color = 'black';
@@ -134,39 +131,130 @@ function showBoth(maryArray, percyArray) {
   });
 }
 
-// Logic for 'Mary'
 function showMary(maryArray, percyArray) {
   maryArray.forEach(function (element) {
-    // Modify the style of the element for Mary (e.g., highlight in a different color)
-    element.style.color = 'red'; // Change this to the desired style
+    element.style.color = 'red';
   });
 
   percyArray.forEach(function (element) {
-    // Modify the style of the element for Percy (in black)
     element.style.color = 'lightgrey';
-    // You can add additional styling or visibility modifications as needed
   });
 }
 
-// Logic for 'Percy'
 function showPercy(maryArray, percyArray) {
   percyArray.forEach(function (element) {
-    // Modify the style of the element for Percy (e.g., highlight in a different color)
-    element.style.color = 'red'; // Change this to the desired style
+    element.style.color = 'red';
   });
 
   maryArray.forEach(function (element) {
-    // Modify the style of the element for Mary (in red)
     element.style.color = 'lightgrey';
-    // You can add additional styling or visibility modifications as needed
   });
 }
 
-// write another function that will toggle the display of the deletions by clicking on a button
 function toggleDeletions(event) {
   var deletions = document.getElementsByTagName("del");
   let showDeletions = event.target.checked;
   for (let deletion of deletions) {
     deletion.style.color = showDeletions ? 'red' : 'black';
   }
+}
+
+function displayReadingText() {
+  var deletions = document.getElementsByTagName("del");
+  var additions = document.getElementsByTagName("ins");
+
+  
+  for (let deletion of deletions) {
+    deletion.style.display = 'none';
+  }
+
+  
+  for (let addition of additions) {
+    addition.style.textDecoration = 'none'; 
+    addition.style.display = 'inline';
+  }
+}
+
+function resetToOriginal(maryArray, percyArray) {
+  var deletions = document.getElementsByTagName("del");
+  var additions = document.getElementsByTagName("ins");
+
+  
+  for (let deletion of deletions) {
+    deletion.style.display = 'inline'; 
+  }
+
+  
+  for (let addition of additions) {
+    addition.style.textDecoration = 'none';
+  }
+
+  
+  maryArray.forEach(function (element) {
+    element.style.color = 'black';
+  });
+
+  percyArray.forEach(function (element) {
+    element.style.color = 'black';
+  });
+}
+
+document.getElementById("prevBtn").addEventListener("click", function () {
+  navigatePage(-1);
+});
+
+document.getElementById("nextBtn").addEventListener('click', function () {
+  navigatePage(1);
+});
+
+
+function navigatePage(direction) {
+  let currentPage = getCurrentPageNumber();
+  let currentIndex = pageNumbers.indexOf(currentPage);
+  let newIndex = currentIndex + direction;
+
+  if (newIndex >= 0 && newIndex < pageNumbers.length) {
+    let newPage = pageNumbers[newIndex];
+    let newUrl = updateQueryStringParameter(window.location.href, 'page', newPage);
+    window.location.href = newUrl;
+  }
+}
+
+function getCurrentPageNumber() {
+  let urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('page');
+}
+
+function updateQueryStringParameter(uri, key, value) {
+  let re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+  let separator = uri.indexOf('?') !== -1 ? "&" : "?";
+
+  if (uri.match(re)) {
+    return uri.replace(re, '$1' + key + "=" + value + '$2');
+  } else {
+    return uri + separator + key + "=" + value;
+  }
+}
+
+const pageNumbers = ["21r", "21v", "22r", "22v", "23r", "23v", "24r", "24v", "25r", "25v"];
+
+
+
+var isRed = false;
+
+function toggleDel() {
+  var delElements = document.querySelectorAll('del');
+  
+  delElements.forEach(function(delElement) {
+    if (isRed) {
+      // If currently red, set color to default (black)
+      delElement.style.color = 'black';
+    } else {
+      // If not red, set color to red
+      delElement.style.color = 'red';
+    }
+  });
+
+  // Toggle the state
+  isRed = !isRed;
 }

@@ -14,7 +14,8 @@
         <title>Frankenstein Edition</title>
         <link href="style.css" rel="stylesheet">
   </head>
-  <body>
+
+  <body style="background-color: #f2f2f2;">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Frankenstein</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,53 +44,55 @@
         </ul>
       </div>
     </nav>
-    <div class="container-fluid">
-      <h1>Mary Wollstonecraft Shelley - <i>Frankenstein</i></h1>
+    <div class="container mt-5 custom-font">
+      <h1 class="text-center">Mary Wollstonecraft Shelley - <i>Frankenstein</i></h1>
+      <p class="text-center" >Edited by Kamiel Temmerman</p>
       
+
       <div class="row">
-        <div class="col-5">   
-          <p>Welcome to the mini digital edition of Mary Shelley's <i>Frankenstein</i>. Made as a project for Text as Data II, taught at the University of Antwerp.</p>
-          <p>Context about the manuscript:</p>
+        <div class="col-md-5">
+          <p class="text-center">
+            <img src="Percy_Mary_Shelley.jpeg" alt="Mary and Percy Shelley" width="600" height="500">
+            Percy Shelley and Mary Shelley
+          </p>
+        </div>
+        <div class="col-md-7">
           <ul>
-            <li>Percy Shelley and Mary Shelley:
-              <img src="Percy_Mary_Shelley.jpeg" alt="Mary and Percy Shelley" width="300" height="200">
-            </li>
-            <li>A table/list with the pages in this digital edition;
+            <h2 class="text-center small-text">About the Manuscript:</h2>
+            <p class="text-center" >Welcome to the mini digital edition of Mary Shelley's <i>Frankenstein</i>. 
+              Made as a project for Text as Data II, taught at the University of Antwerp. 
+              This project was based on the <a href="http://shelleygodwinarchive.org/" target="_blank"> Shelley Godwin Archive.</a>
+              To get more information about the way the enconding was done you can take a look at the <a href="https://bdmpmanual.uantwerpen.be/" target="_blank"> encoding manual.</a>
+              For more information about this or any other works see <a href="https://www.bodleian.ox.ac.uk/home" target="_blank"> the website of the Bodleian Library.</a>
+             
+            </p>
+            <li class="text-center">A table with the pages in this digital edition:
               <table>
                 <tr>
-                  <td>Page 21r</td>
-                  <td>Page 21v</td>
+                  <td><a href="manuscript.html?page=21r">21r</a></td>
+                  <td><a href="manuscript.html?page=21v">21v</a></td>
                 </tr>
                 <tr>
-                  <td>Page 22r</td>
-                  <td>Page 22v</td>
+                  <td><a href="manuscript.html?page=22r">22r</a></td>
+                  <td><a href="manuscript.html?page=22v">22v</a></td>
                 </tr>
                 <tr>
-                  <td>Page 23r</td>
-                  <td>Page 23v</td>
+                  <td><a href="manuscript.html?page=23r">23r</a></td>
+                  <td><a href="manuscript.html?page=23v">23v</a></td>
                 </tr>
                 <tr>
-                  <td>Page 24r</td>
-                  <td>Page 24v</td>
+                  <td><a href="manuscript.html?page=24r">24r</a></td>
+                  <td><a href="manuscript.html?page=24v">24v</a></td>
                 </tr>
                 <tr>
-                  <td>Page 25r</td>
-                  <td>Page 25v</td>
+                  <td><a href="manuscript.html?page=25r">25r</a></td>
+                  <td><a href="manuscript.html?page=25v">25v</a></td>
                 </tr>
               </table>
             </li><lb/>
-            <li>
-              <a href="https://www.bodleian.ox.ac.uk/home" target="_blank">The link to the Bodleian Library</a>
-            </li>
-            <li>  
-              <a href="http://shelleygodwinarchive.org/" target="_blank"> The link to the Shelley Godwin Archive, on which this digital edition was based</a>
-            </li>
-            <li>Edited by Kamiel Temmerman.</li>
-            <li>The licence: <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">including link</a> </li>
-            <li> <a href="https://bdmpmanual.uantwerpen.be/" target="_blank">The link to the encoding manual</a></li>
+            <li class="text-center"> <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank"> The licence link.</a> </li>
           </ul>
         </div>
-        <div class="col-7" id="text"></div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>

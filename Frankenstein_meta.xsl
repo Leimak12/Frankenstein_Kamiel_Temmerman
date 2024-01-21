@@ -17,18 +17,21 @@
                          </div>
                          <div class="col">
                             <ul> 
-                                <li>Total number of modifications: 
-                                    <xsl:value-of select="count(//tei:del|//tei:add)" /> <!-- Counts all the add and del elements, and puts it in a list item -->
+                                <li>Total number of modifications:
+                                  <xsl:value-of select="count(//tei:del|//tei:add)" /> <!-- Counts all the add and del elements, and puts it in a list item -->
                                 </li>
-                                <li>Number of additions:
-                                    <xsl:value-of select="count(//tei:add)" />
+                                <li>Total number of deletions by Percy Shelley:
+                                  <xsl:value-of select="count(//tei:del[@hand='#PBS'])" />
                                 </li>
-                                <li>Number of corrections by Percy Shelley:
-                                    <xsl:value-of select="count(//tei:del[@hand='#PBS'])" />
+                                <li>Total number of additions by Percy Shelley:
+                                  <xsl:value-of select="count(//tei:add[@hand='#PBS'])" />
                                 </li>
-                                <li>Number of corrections by Mary Shelley:
-                                    <xsl:value-of select="count(//tei:del[@hand='#MWS'])" />
-                                </li>                         
+                                <li>Total number of deletions by Mary Shelley:
+                                  <xsl:value-of select="count(//tei:del[@hand='#MWS'])" />
+                                </li>
+                                <li>Total number of additions by Mary Shelley:
+                                  <xsl:value-of select="count(//tei:add[@hand='#MWS'])" />
+                                </li>                        
                             </ul>
                         </div>
                      </div>

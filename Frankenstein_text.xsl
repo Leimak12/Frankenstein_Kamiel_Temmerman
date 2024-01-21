@@ -44,7 +44,7 @@
     </xsl:template>
     
     <xsl:template match="tei:p">
-        <p><xsl:apply-templates/></p>
+        <p class="my-custom-class" style="line-height: 1.7;"><xsl:apply-templates/></p>
     </xsl:template>
 
   
@@ -62,10 +62,7 @@
             <xsl:apply-templates/>
         </del>
     </xsl:template>
-    
-    <!-- all the supralinear additions are given in a span with the class supraAdd, make sure to put this class in superscript in the CSS file, -->
-    
-    
+
     <xsl:template match="tei:lb">
         <br/>
     </xsl:template>
@@ -88,7 +85,7 @@
     </xsl:template>
    
     <xsl:template match="tei:hi[@rend='circled']">
-        <span class="circled">
+        <span class="circled smaller-circle">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
@@ -112,9 +109,6 @@
             </add>
         </span>
     </xsl:template>
-
-    
-    <!-- add additional templates below, for example to transform the tei:lb in <br/> empty elements, tei:hi[@rend = 'sup'] in <sup> elements, the underlined text, additions with the attribute "overwritten" etc. -->
 
     
 </xsl:stylesheet>
