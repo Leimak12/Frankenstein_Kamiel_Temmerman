@@ -58,14 +58,14 @@ table td {
 }
 
 .small-text {
-  font-size: 21px; /* Adjust the font size as needed */
+  font-size: 21px;
 }
 
 img {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
-  margin: 10px auto; /* Center-align images */
+  margin: 10px auto;
   display: block; 
 }
 
